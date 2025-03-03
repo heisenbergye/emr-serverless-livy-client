@@ -37,12 +37,24 @@ e3946ce693f8d57028bdaf99eab78efdad1499ec3a51857c7d71bcbabd95c692
 ```
 
 #### 使用方法
-使用前请先 start EMR serverless application
+1. 请确认本地已有AWS AKSK并有权限
+2. 替换 src/main/java/com/example/emr/EmrServerlessLivyClient.java 中 397-399 行
+```
+        String applicationId = "00fqi5n5j9ctg90l";
+        String region = "us-west-2";
+        String roleArn = "arn:aws:iam::808577411626:role/emrServerlessLivyTestRole";
+```
+3. 打包
 ```
 cd emr-serverless-livy-client
 mvn package
+```
+4. 使用前请先 start EMR serverless application
+5. 执行function
+```
 java -cp target/emr-serverless-livy-client-1.0-SNAPSHOT-jar-with-dependencies.jar com.example.emr.EmrServerlessLivyClient
 ```
+
 
 #### 参考文档
 https://docs.aws.amazon.com/zh_cn/IAM/latest/UserGuide/reference_sigv.html
